@@ -1,6 +1,7 @@
 package com.rbac.controller;
 
-import lombok.extern.slf4j.Slf4j;
+import com.rbac.common.JsonData;
+import com.rbac.exception.PermissionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,13 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/test")
 public class TestController {
 
-    private Logger logger = LoggerFactory.getLogger(TestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
-    @RequestMapping(value = "/hello")
+    @RequestMapping(value = "/hello.json")
     @ResponseBody
-    public String hello(){
+    public JsonData hello() {
         logger.info("hello");
-        return "hello, premission";
+        throw new RuntimeException("test permission");
+//        return JsonData.success("hello, permission");
     }
 
 }

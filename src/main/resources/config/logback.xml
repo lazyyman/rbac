@@ -24,7 +24,7 @@
     <!-- TEACE < DEBUG < INFO < WARN < ERROR -->
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="permission"/>
+        <!--<appender-ref ref="permission"/>-->
     </root>
 
 

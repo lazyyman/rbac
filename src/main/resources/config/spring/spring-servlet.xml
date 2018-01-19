@@ -36,9 +36,11 @@
 
     <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>-->
 
+    <bean class="com.rbac.common.SpringExceptionResolver"/>
+
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
 
-    <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+    <bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
 
     <!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
