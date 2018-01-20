@@ -12,8 +12,14 @@
     <!-- 启动注解驱动的spring mvc 功能 -->
     <mvc:annotation-driven/>
 
+    <mvc:interceptors>
+        <bean class="com.rbac.common.HttpInterceptor"/>
+    </mvc:interceptors>
+
     <!-- 启动包扫描功能 -->
     <context:component-scan base-package="com.rbac.controller"/>
+
+    <bean class="com.rbac.common.ApplicationContextHelper" lazy-init="false"/>
 
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->
     <bean id="mappingJacksonHttpMessageConverter"
@@ -29,7 +35,7 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">
             <list>
-                <ref bean="mappingJacksonHttpMessageConverter" />	<!-- JSON转换器 -->
+                <ref bean="mappingJacksonHttpMessageConverter"/>    <!-- JSON转换器 -->
             </list>
         </property>
     </bean>

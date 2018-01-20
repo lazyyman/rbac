@@ -1,5 +1,6 @@
 package com.rbac.common;
 
+import com.rbac.exception.ParamException;
 import com.rbac.exception.PermissionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,6 @@ public class SpringExceptionResolver implements HandlerExceptionResolver {
     private static final String json_request = ".json";
     private static final String page_request = ".page";
 
-    @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object o, Exception e) {
 
         String url = request.getRequestURL().toString();
@@ -29,7 +29,7 @@ public class SpringExceptionResolver implements HandlerExceptionResolver {
         // .json  .page
         // 这里我们要求项目中所有请求json数据, 都使用.json结尾
         if (url.endsWith(json_request)) {
-            if (e instanceof PermissionException) {
+            if (e instanceof PermissionException || e instanceof ParamException) {
                 JsonData result = JsonData.fail(e.getMessage());
                 mv = new ModelAndView("jsonView", result.toMap());
             } else {

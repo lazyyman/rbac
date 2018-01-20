@@ -1,12 +1,22 @@
 package com.rbac.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import java.util.Date;
 
 /**
  * 部门model
+ *
  * @author lxw
  * @date 2018-02-19
  */
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class SysDept {
     private Integer id;
 
